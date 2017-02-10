@@ -66,6 +66,11 @@
 	status = "okay";
 };
 
+/* PWM1 (Raspberry PI Expansion header) */
+&pwm1 {
+	status = "okay";
+};
+
 /* MCA IO0 connected to Grove ADC connector */
 &mca_adc {
 	digi,adc-ch-list = <0>;
