@@ -78,9 +78,11 @@
 //};
 
 /* PWM1 (Raspberry PI Expansion header) */
-//&pwm1 {
-//	status = "okay";
-//};
+&pwm1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_pwm1>;
+	status = "okay";
+};
 
 /* UART4 (Raspberry PI Expansion header) */
 &uart4 {
