@@ -42,7 +42,8 @@
 	phy-supply = <&eth1_3v3>;
 	phy-handle = <&ethphy0>;
 	phy-reset-gpios = <&mca_gpio 7 GPIO_ACTIVE_LOW>;
-	phy-reset-duration = <1>;
+	phy-reset-duration = <26>;
+	digi,phy-reset-in-suspend;
 	status = "disabled";
 
 	mdio {
@@ -136,12 +137,6 @@
 	pinctrl-0 = <&pinctrl_usdhc2>;
 	broken-cd;      /* no carrier detect line (use polling) */
 	no-1-8-v;
-	status = "disabled";
-};
-
-&i2c2 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "disabled";
 };
 
