@@ -24,6 +24,7 @@
 #include <linux/regmap.h>
 #include <linux/slab.h>
 #include <linux/suspend.h>
+#include <linux/gpio.h>
 #include <asm/cacheflush.h>
 #include <asm/fncpy.h>
 #include <asm/mach/map.h>
@@ -866,6 +867,10 @@ static int imx6q_pm_enter(suspend_state_t state)
 
 		/* Zzz ... */
 		cpu_suspend(0, imx6q_suspend_finish);
+
+		gpio_request(68, "suspend");
+		gpio_set_value(68, 1);
+		gpio_free(68);
 
 		if (cpu_is_imx6sx() && imx_gpc_is_mf_mix_off()) {
 			writel_relaxed(ccm_ccgr4, ccm_base + CCGR4);
