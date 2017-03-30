@@ -865,10 +865,14 @@ static int imx6q_pm_enter(suspend_state_t state)
 					sizeof(struct qspi_regs));
 		}
 
+		gpio_request(74, "suspend");
+		gpio_set_value(74, 0);
+		gpio_free(74);
+
 		/* Zzz ... */
 		cpu_suspend(0, imx6q_suspend_finish);
 
-		gpio_request(68, "suspend");
+		gpio_request(68, "resume");
 		gpio_set_value(68, 1);
 		gpio_free(68);
 
